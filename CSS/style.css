@@ -1,0 +1,543 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@font-face{
+    src: url(../Font/neochic-thin.otf);
+    font-family: myFont1;}
+
+@font-face{
+    src: url(../Font/neochic-regular.otf);
+    font-family: myFont2;}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/*layouts*/
+@media only screen and (max-width: 768px){
+    .container{
+        width: 100%;
+        grid-template-columns: 1fr;
+        padding: 3rem;
+        gap: 7rem;}}
+
+@media only screen and (max-width: 768px){
+    .profile_container > .first_profile_container{
+        flex-direction: column;}}
+
+
+/* Keyframes for moving gradient back and forth */
+@keyframes gradientOscillate {
+    0% {background-position: 0% 50%; /* Start gradient at the left */}
+    50% {background-position: 100% 50%; /* Move gradient to the right */}
+    100% {background-position: 0% 50%; /* Move gradient back to the left */}}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; /*helps you keep the box size fixed*/}
+
+:root{
+    --primary_color: #ff7613;
+    --first_text_color: #727171;
+    --second_text_color: #F4FDFF;
+    --third_text_color: #CD9847;
+    --fourth_text_color: #2A354B;
+    --fifth_text_color: #55606f}
+
+html{
+    font-size: 10px;}
+
+body{
+    font-family: Inter, sans-serif;
+    color: white;
+    margin: 0;
+    background-image: url(../Images/Items/Emerald_&_Black_Minimalist_Simple_Office_Tables_Desktop_Wallpaper_Lower.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;}
+
+.container{
+    max-width: 1000px;
+    width: 90%;
+    margin: 2rem auto;
+    display: grid;
+    background: #003147; /*background: #070707;*/
+    grid-template-columns: 1fr 1.5fr;
+    border-radius: 1.5rem;
+    z-index: -11;
+}
+
+/*common styles*/
+img{
+    width: 100%;}
+
+a{
+    text-decoration: none;
+    color: var(--second_text_color);}
+
+.description{
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--first_text_color);}
+
+.indicator{
+    margin: 0;
+    padding: 0;
+    border-radius: 0 1.5rem 1.5rem 0;
+    background-color: var(--second_text_color);
+    color: var(--fourth_text_color);
+    width: 100%;
+    height: 3rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;}
+
+.left_container .indicator_container, .left_container .indicator_container{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 1rem 0 1rem 2rem;}
+
+.profile_container .horizontalRule, .right_container .horizontalRule{
+    /* 
+    *       POSSIBLE TO USE 
+    * border: 0; Remove default border
+    * border-top: 2px solid #4CAF50; Green color
+    * 
+    *       POSSIBLE TO USE
+    * border: none; Remove the default border 
+    * height: 1px; Set the thickness
+    * background-color: #ff6347; Tomato color
+    * 
+    * 
+    * background: linear-gradient(to right, #FCC201, #85582C);  Gradient from brown to bright golden
+    */
+    
+    /* Style for the horizontal rule with moving gradient */
+    border: none; /* Remove default border */
+    height: 2px; /* Set thickness */
+    background: linear-gradient(90deg, #FFD700, #ff7613, #C1860D, #9C6715); /* Define gradient colors */
+    background-size: 200% 100%; /* Extend gradient for smooth animation */
+    animation: gradientOscillate 5s ease infinite; /* Animate gradient movement */
+    
+    margin-bottom: 0.5rem;}
+
+/***********First Container***********/
+.profile_container{
+    grid-column: 1 / -1;
+    margin: 3rem 2rem 2rem 1rem;}
+
+.profile_container .first_profile_container{
+    /*border: 1px solid red;*/
+    display: flex;}
+
+/*For Image Main Container*/
+.profile_container > .first_profile_container .outerMost_container_img{
+    max-width: 250px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+     /*this is for going backwar to shoe the glowing effect of animation of profile picture*/
+    z-index: 1;}
+
+/*****Border Animations*****/
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 25deg;
+    inherits: false;}
+
+.imgContainer{
+    background: rgba(0,0,0,0.5);
+    position: relative;
+    width: 200px;
+    height: 230px;
+    border-radius: 50%;
+    transform: rotate(35deg);
+    
+    /*This is for hiding the overflow of the box*/
+    overflow: hidden;}
+
+.imgContainer::before{
+    content: '';
+    position: absolute;
+    inset: -4px 50px;
+    background-image: conic-gradient(from var(--angle), #FFD700, #ff7613, #C1860D, #9C6715, #FFD700);
+    transition: 0.5s;
+    animation: animate 4s linear infinite;
+            
+    /*for filtering the color*/
+    filter: blur(0.4rem);
+    /*for opacity of the color*/
+    opacity: 1;}
+
+.imgContainer:hover::before{
+    /*This is for the size of the box when you hover it*/
+    inset: -5px -20px;}
+
+@keyframes animate{
+    0%{
+        transform: rotate(0deg);}
+    
+    100%{
+        transform: rotate(360deg);}
+}
+
+.imgContainer::after{
+    content: '';
+    position: absolute;
+    background: #162052;
+    inset: 2px; /*size of the oblong border outside*/
+    border-radius: 50%;}
+
+.content{
+    position: absolute;
+    /*border: 3px solid #070a1c;*/
+    inset: 2px;
+    z-index: 3;
+    border-radius: 50%;
+    overflow: hidden;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;}
+
+.content:hover{
+    border: 3px solid #070a1c;
+    inset: 20px;
+    transition: 0.5s;}
+
+.content > .image_container{
+    transform: rotate(-35deg); /*to put back the rotation*/
+    position: absolute;
+    top: 0;
+    left: -1%;
+    width: 105%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+    pointer-events: none;
+    
+    /*for hiding .hoverImgContent and the image will be front*/
+    z-index: 3;}
+
+.imgContainer:hover .content > .image_container{
+    opacity: 0;}
+
+.hoverImgContent{
+    /*to put back the rotation*/
+    transform: rotate(-35deg);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;}
+
+.hoverImgContent h2{
+    font-size: 1.5em; 
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;}
+
+.hoverImgContent h2 span{
+    font-weight: 300;
+    font-size: 0.7em;}
+
+ .hoverImgContent a{
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #fff;
+    color: #070a1c;
+    border-radius: 25px;
+    font-weight: 500;
+    font-size: 1.25em;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+     
+     /*This is for the effect of the transition when hovering*/
+    transition: 0.5s;}
+
+.hoverImgContent a:hover{
+    letter-spacing: 0.2em;}
+
+
+
+/*This first inner container is for the picture that will crop the overflow of an image*/
+.profile_container > .first_profile_container .inner_container_img {
+    position: relative;
+    width: 200px; /* Set the desired width */
+    height: 230px; /* Set the desired height */
+    border-radius: 50%;
+    overflow: hidden; /* Hide overflowing parts */
+    margin: 0 auto; /* For visual clarity */
+    padding: 0;}
+
+.profile_container > .first_profile_container .image_container {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    left: -4%;
+    width: 107%;
+    height: 100%;
+    
+    /* Counter-rotate the content */
+    transform: rotate(-35deg); 
+    /* Clip the image to fit the rotated container */}
+
+.profile_container .content_firstProfileContainer{
+    padding: 0;
+    margin-left: 2rem;
+    width: 90%;}
+
+.profile_container .profile_name{
+    display: block;}
+
+.profile_container .profile_name > .profile_name_lastName{
+    color: #F4FDFF;
+    display: block;
+    font-family: myFont1;
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Optional: show ellipsis for overflow */
+    /*               min-FontWeight 
+    *                |    
+    *                |     8% of width size of the screen
+    *                |     |    max-FontWeight*/
+    font-size: clamp(2rem, 4vw, 4rem);
+    text-transform: uppercase;}
+
+.profile_container .profile_name > .profile_name_firstName{
+    padding: 0;
+    font-family: myFont2;
+    
+    background: linear-gradient(90deg, #FFD700, #ff7613, #C1860D, #9C6715); /* Define gradient colors */
+    background-size: 200% 100%; /* Extend gradient for smooth animation */
+    -webkit-background-clip: text; /* Clip gradient to text */
+    -webkit-text-fill-color: transparent; /* Make text fill transparent */
+    animation: gradientOscillate 5s ease infinite; /* Animate gradient movement */
+
+    margin-bottom: 1rem;
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Optional: show ellipsis for overflow */
+    /*               min-FontWeight 
+    *                |    
+    *                |     8% of width size of the screen
+    *                |     |    max-FontWeight*/
+    font-size: clamp(2.5rem, 5.5vw, 5.5rem);
+    text-transform: uppercase;}
+
+
+
+.profile_container .content_firstProfileContainer > .profile_title{
+    color: var(--second_text_color);
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-transform: uppercase;}
+
+.profile_container .content_firstProfileContainer > p{
+    margin-bottom: 1rem;}
+
+.profile_container .content_firstProfileContainer > .downloadBtn{
+    text-decoration: underline;
+    font-size: 1rem;
+    margin-top: 1rem;}
+
+.profile_container .content_firstProfileContainer > .downloadBtn:hover{
+    color: var(--primary_color);}
+
+
+/***********Second Container***********/
+.left_container{
+    width: 90%}
+
+.left_container .indicator_container > .content_aboutMeContainer{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;}
+
+.left_container .content_aboutMeContainer > .logo{
+    margin-right: 1.5rem;
+    padding: 0;
+    width: 8%;}
+
+/*Group 1*/
+.left_container > .group_1 .aboutMe_details{
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--second_text_color);}
+
+.left_container > .group_1 .anchorTag:hover{
+    color: var(--primary_color);}
+
+
+/*Group 2*/
+.left_container > .group_2 .indicator_container{
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+    margin: 1rem 0 1.5rem 2rem;
+    width: 95%;}
+
+.left_container > .group_2 .indicator_container > li{
+    position: relative;
+    margin: 0 0 0.7rem 0;
+    padding-left: 1.5em; /* Space for the icon */
+    width: 100%;
+
+}
+
+.left_container > .group_2 .indicator_container > li::before{
+    content: ''; /* Remove text content */
+    position: absolute;
+    top: 7%;
+    left: 0;
+    width: 1em; /* Adjust size as needed */
+    height: 1em; /* Adjust size as needed */
+    background-image: url('../Images/Items/Blue_Check.gif'); /* Path to your image */
+    background-size: 1.7rem; /* Ensure the image is scaled correctly */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center; /* Center the image */
+}
+
+.left_container > .group_2 .indicator_container .MyCourse{
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--third_text_color);}
+
+.left_container > .group_2 .indicator_container .hoverEffect:hover{
+    color: var(--primary_color);}
+
+/*Group 3*/
+.left_container > .group_3 .indicator_container{
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+    margin: 1rem 0 1.5rem 2rem;
+    width: 95%;}
+
+.left_container > .group_3 .indicator_container > li{
+    position: relative;
+    margin: 0 0 0.7rem 0;
+    padding-left: 1.5em; /* Space for the icon */
+    width: 100%;}
+
+.left_container > .group_3 .indicator_container > li::before{
+    content: ''; /* Remove text content */
+    position: absolute;
+    top: 7%;
+    left: 0;
+    width: 1em; /* Adjust size as needed */
+    height: 1em; /* Adjust size as needed */
+    background-image: url('../Images/Items/Blue_Check.gif'); /* Path to your image */
+    background-size: 1.7rem; /* Ensure the image is scaled correctly */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center; /* Center the image */
+
+}
+
+.left_container > .group_3 .indicator_container > .MySkills{
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--third_text_color);}
+
+
+
+/***********Third Container***********/
+.right_container{
+    background-color: black;
+    border-radius: 5rem 0 1.5rem 0;
+    padding: 3rem 0 0 0.8rem;
+    margin: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 14fr;}
+
+.right_container > .first_container_img{
+    padding: 0 2rem 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;}
+
+.right_container > .first_container_img > .diamondLineDesignImage{
+    height: 40rem;}
+
+.right_container > .second_container_expCert{
+    /*border: 1px solid red;*/
+    position: relative;
+    width: 100%;}
+
+.right_container > .second_container_expCert > .scrollContainer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;}
+
+.right_container > .second_container_expCert > .scrollContainer::-webkit-scrollbar{
+    /*For hiding the scroll bar*/
+    display: none;}
+
+.right_container > .second_container_expCert .container_indicator{
+    margin-bottom: 2rem;
+    max-width: 96%;}
+
+.right_container > .second_container_expCert .indicator_expCert{
+    font-size: 2.3rem;
+    font-weight: 400;
+    color: var(--third_text_color);}
+
+.right_container > .second_container_expCert .experienceContainer{
+    /*border: 1px solid red;*/
+    margin: 0 2rem 6rem 0;}
+
+.right_container > .second_container_expCert .inside_ExpContainer{
+    margin-bottom: 3rem;}
+
+.right_container > .second_container_expCert .title_exp{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #43577F;}
+
+.right_container > .second_container_expCert .title_exp > h4{
+    font-size: small;}
+
+.right_container > .second_container_expCert .titleExpHoverEffect{
+    color: #43577F;}
+
+.right_container > .second_container_expCert .titleExpHoverEffect:hover{
+    color: var(--primary_color);}
+
+.right_container > .second_container_expCert p{
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #2A354B;}
+
+.right_container > .second_container_expCert .expDetails{
+    list-style: none; /* Remove default bullets */
+    padding-left: 1rem;
+    width: 100%;}
+
+.right_container > .second_container_expCert .expDetails li{
+    position: relative;
+    margin: 0 0 0.7rem 0;
+    padding-left: 1.5em; /* Space for the icon */
+    width: 100%;}
+
+.right_container > .second_container_expCert .expDetails li::before{
+    content: '●'; /* Unicode or icon */
+    position: absolute;
+    left: 0;
+    color: var(--third_text_color);}
+
+.right_container > .second_container_expCert .Anchor_Certifications_Details{
+    color: var(--fifth_text_color);}
+
+.right_container > .second_container_expCert .Anchor_Certifications_Details:hover{
+    color: var(--primary_color);}
+
+.right_container > .second_container_expCert .Certifications_Details > p{
+    color: var(--first_text_color);
+    font-size: smaller;}
